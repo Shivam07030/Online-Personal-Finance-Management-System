@@ -1,0 +1,163 @@
+body, html {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  background: #181b2a;
+  font-family: 'Orbitron', 'Audiowide', 'Arial', sans-serif;
+}
+
+/* Ultra-dim neon animated background */
+.background {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background:
+    radial-gradient(circle at center, rgba(0,255,255,0.03) 0%, transparent 92%),
+    repeating-linear-gradient(45deg, transparent 0 5px, rgba(0, 255, 255, 0.0007) 5px 10px);
+  animation: moveGrid 9s linear infinite;
+  z-index: 1;
+}
+@keyframes moveGrid {
+  from { background-position: 0 0, 0 0; }
+  to   { background-position: 100px 100px, 50px 50px; }
+}
+.grid-lines {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 2;
+  background:
+    repeating-linear-gradient(to right, rgba(0,255,255,0.0007) 0 2px, transparent 2px 40px),
+    repeating-linear-gradient(to bottom, rgba(0,255,255,0.0005) 0 2px, transparent 2px 40px);
+}
+.glow-circles {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 3;
+}
+.glow-circles div {
+  position: absolute;
+  border-radius: 50%;
+  box-shadow: 0 0 7px 2px #00ffff07;
+  background: rgba(0,255,255,0.003);
+  animation: pulse 2.8s ease-in-out infinite alternate;
+}
+.glow-circles div:nth-child(1) { width: 120px; height: 120px; top: 19%; left: 23%; animation-delay: 0s; }
+.glow-circles div:nth-child(2) { width: 80px; height: 80px; top: 60%; left: 43%; animation-delay: .8s; }
+.glow-circles div:nth-child(3) { width: 104px; height: 104px; top: 36%; left: 70%; animation-delay: 1.4s; }
+@keyframes pulse {
+  0% { box-shadow: 0 0 4px 1px #00ffff05; transform: scale(1); }
+  100% { box-shadow: 0 0 7px 3px #00ffff09; transform: scale(1.05); }
+}
+
+/* Panels always above backgrounds! */
+.login-panel, .transactions-panel, .dashboard-panel {
+  position: relative;
+  z-index: 50;
+}
+
+/* Panel and form/table styling stays unchanged */
+.login-panel {
+  background: rgba(12, 24, 32, 0.82);
+  border-radius: 20px;
+  box-shadow: 0 0 40px 8px #00fff9, 0 0 12px 3px #0044ff;
+  padding: 38px 28px;
+  max-width: 350px;
+  margin: 120px auto 0 auto;
+  text-align: center;
+}
+.transactions-panel {
+  background: rgba(12, 24, 32, 0.95);
+  border-radius: 20px;
+  box-shadow: 0 0 48px 8px #00fff9, 0 0 12px 3px #0044ff;
+  padding: 38px 28px;
+  max-width: 900px;
+  margin: 80px auto 0 auto;
+  text-align: center;
+}
+.dashboard-panel {
+  background: rgba(12, 24, 32, 0.95);
+  border-radius: 22px;
+  box-shadow: 0 0 40px 6px #56fff8, 0 0 10px 3px #008cff;
+  padding: 38px 28px 48px 28px;
+  max-width: 500px;
+  margin: 110px auto 0 auto;
+  text-align: center;
+}
+.login-panel h2,
+.transactions-panel h2,
+.dashboard-panel h2 {
+  color: #7ef9ff;
+  text-shadow: 0 0 9px #00fff9;
+  margin-bottom: 28px;
+  letter-spacing: 2px;
+}
+.transactions-form select,
+.transactions-form input[type="number"],
+.transactions-form input[type="text"],
+.transactions-form input[type="date"] {
+  border-radius: 8px;
+  border: none;
+  background: #262648;
+  color: #a0f0ff;
+  font-size: 15px;
+  margin-right: 6px;
+  padding: 8px 14px;
+  box-shadow: 0 0 10px 2px #00fff988;
+  outline: none;
+  margin-bottom: 8px;
+}
+.transactions-form button,
+.login-panel button {
+  padding: 8px 24px;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #00ffd0, #0040ff);
+  color: #fff;
+  font-size: 16px;
+  box-shadow: 0 0 13px 3px #00fff9bb;
+  border: none;
+}
+.transactions-table {
+  width: 100%;
+  margin-top: 32px;
+  border-collapse: collapse;
+  background: rgba(20, 26, 40, 0.94);
+  border-radius: 10px;
+  box-shadow: 0 0 18px 4px #00fff975;
+  color: #e0f4ff;
+}
+.transactions-table th, .transactions-table td {
+  padding: 11px 8px;
+  border-bottom: 1px solid #00fff966;
+}
+.transactions-table th {
+  color: #00fff9;
+  font-weight: 700;
+  text-shadow: 0 0 8px #00fff9;
+}
+.dashboard-stats p {
+  color: #b2edfd;
+  font-size: 19px;
+  text-shadow: 0 0 6px #00ffe9cc;
+  margin: 0 0 13px 0;
+}
+.reports-panel {
+  background: rgba(12, 24, 32, 0.95);
+  border-radius: 22px;
+  box-shadow: 0 0 40px 6px #56fff8, 0 0 10px 3px #008cff;
+  padding: 38px 28px 48px 28px;
+  max-width: 600px;
+  margin: 110px auto 0 auto;
+  text-align: center;
+}
+.reports-panel h2 {
+  color: #7ef9ff;
+  text-shadow: 0 0 9px #00fff9;
+  margin-bottom: 28px;
+  letter-spacing: 2px;
+}
+
+
